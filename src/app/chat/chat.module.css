@@ -1,0 +1,7 @@
+.chatContainer {
+  @apply bg-neutral-200 text-neutral-800 rounded-lg p-3 flex-[50%] p-2 mx-1;
+}
+
+.chatHeader {
+  @apply w-full flex flex-row text-xl text-neutral-800 font-bold pb-2 place-content-between;
+}

@@ -8,6 +8,6 @@ async function run(query: string) {
     model: "gpt-3.5-turbo",
   })
   const [choice] = completion.choices
-  return choice.message.content
+  return choice.message.content || ""
 }
 export { run }

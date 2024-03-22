@@ -1,5 +1,4 @@
 "use client"
-import Image from "next/image"
 
 export default function Header() {
   return (
@@ -10,17 +9,20 @@ export default function Header() {
         backdropFilter: "blur(10px)",
       }}
     >
-      <div className={`flex flex-row items-center`}>
-        <Image
-          src="/google-gemini.png"
-          width={200}
-          height={180}
+      <div className={`flex flex-row items-center p-4`}>
+        <img
+          src="/google-gemini-smaller.png"
+          className="h-[50px]"
           alt="Google Gemini"
         />
         <span className={`text-3xl text-neutral-100 font-bold px-5`}>VS</span>
-        <Image src="/open-ai-white.png" width={80} height={60} alt="OpenAI" />
+        <img
+          src="/open-ai-white-smaller.png"
+          className="h-[42px] mt-4"
+          alt="OpenAI"
+        />
       </div>
-      <span className={`text-neutral-300 self-end pb-2 pl-5`}>
+      <span className={`text-neutral-300 self-end pb-2`}>
         This is an AI Comparison tool
       </span>
     </div>

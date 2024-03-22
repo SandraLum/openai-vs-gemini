@@ -14,6 +14,13 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
+          rel="stylesheet"
+        />
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body>
         <Header />
         <div className="content">

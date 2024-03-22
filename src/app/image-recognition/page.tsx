@@ -1,7 +1,7 @@
 export default function ImageRecognition() {
   return (
     <>
-      <div>I am a page - Image Recognition</div>
+      <div>Image Recognition - Work in progress</div>
     </>
   )
 }
