@@ -1,10 +1,10 @@
 "use client"
-
-import { Suspense, useEffect, useLayoutEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import styles from "./chat.module.css"
 import { runGoogleAI, runOpenAI } from "../actions/ai"
 import IconButton from "@/components/IconButton"
 import LoadingSpinner from "@/components/LoadingSpinner"
+import { getSampleQuestions } from "../api/chat"
 
 interface Suggestion {
   query: string
@@ -18,10 +18,12 @@ export default function Chat() {
 
   const refGoogleAIText = useRef<HTMLTextAreaElement>(null)
   const refOpenAIText = useRef<HTMLTextAreaElement>(null)
+  const [suggestions, setSuggestions] = useState<Suggestion[]>([])
 
-  const suggestions: Suggestion[] = [
+  const mockQns: Suggestion[] = [
     {
-      query: "Could you provide me a recipe on how to make mac and cheese",
+      query:
+        "localCould you provide me with a recipe on how to make mac and cheese",
     },
     {
       query:
@@ -31,6 +33,16 @@ export default function Chat() {
       query: "What is the sum of 400 300 200 1000 300 300",
     },
   ]
+
+  useEffect(() => {
+    async function init() {
+      const { data } = await getSampleQuestions()
+      setSuggestions(
+        data ? data.map((d: any) => ({ query: d.question })) : mockQns
+      )
+    }
+    init()
+  }, [])
 
   useEffect(() => {
     if (refGoogleAIText.current) {
@@ -66,14 +78,14 @@ export default function Chat() {
         setGoogleAIResults(result)
         console.log("Google result:", JSON.stringify(result))
       } catch (e) {
-        setGoogleAIResults(e)
+        setGoogleAIResults(e as string)
       }
       try {
         const result = await runOpenAI(query)
         setOpenAIResults(result)
-        console.log("Google result:", JSON.stringify(result))
+        console.log("Open AI result:", JSON.stringify(result))
       } catch (e) {
-        setOpenAIResults(e)
+        setOpenAIResults(e as string)
       }
 
       setLoading(false)

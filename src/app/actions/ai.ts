@@ -5,12 +5,12 @@ import * as OpenAI from "../api/ai/openAI"
 
 export async function runGoogleAI(query: string) {
   const text = await GoogleAI.run(query)
-  console.log("return text", text)
+  console.log("google: text", text)
   return text
 }
 
 export async function runOpenAI(query: string) {
   const text = await OpenAI.run(query)
-  console.log("openAI text", text)
+  console.log("openAI: text", text)
   return text
 }
