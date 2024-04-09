@@ -26,6 +26,11 @@ export default function NavLinks() {
       icon: <Icon icon="chat" className="pr-2" />,
     },
     {
+      name: "Image Generation",
+      path: "/image-generation",
+      icon: <Icon icon="image" className="pr-2" />,
+    },
+    {
       name: "Image Recognition",
       path: "/image-recognition",
       icon: <Icon icon="image" className="pr-2" />,

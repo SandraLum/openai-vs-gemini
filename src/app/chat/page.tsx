@@ -22,8 +22,7 @@ export default function Chat() {
 
   const mockQns: Suggestion[] = [
     {
-      query:
-        "localCould you provide me with a recipe on how to make mac and cheese",
+      query: "Could you provide me with a recipe on how to make mac and cheese",
     },
     {
       query:

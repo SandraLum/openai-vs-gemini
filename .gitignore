@@ -42,3 +42,4 @@ next-env.d.ts
 # local
 wip.txt
 _del*
+**/**.old

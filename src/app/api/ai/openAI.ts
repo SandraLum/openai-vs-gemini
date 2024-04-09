@@ -1,4 +1,5 @@
 import OpenAI from "openai"
+import { Images, ImagesResponse } from "openai/resources/images.mjs"
 
 const openai = new OpenAI()
 
@@ -11,12 +12,24 @@ export async function run(query: string) {
   return choice.message.content || ""
 }
 
-export async function generateImage(query: string) {
-  const image = await openai.images.generate({
+export async function generateImages(
+  query: string
+): Promise<OpenAI.Images.Image[]> {
+  const dall_E_2 = {
+    model: "dall-e-2",
+    prompt: query,
+    n: 1,
+    response_format: "b64_json",
+    size: "256x256",
+  }
+  const dall_e_3 = {
     model: "dall-e-3",
     prompt: query,
     n: 1,
-    size: "512x512",
-  })
+    response_format: "b64_json",
+    size: "1024x1024",
+  }
+
+  const image: ImagesResponse = await openai.images.generate(dall_e_3)
   return image.data
 }
