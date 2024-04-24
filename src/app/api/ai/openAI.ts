@@ -30,6 +30,12 @@ export async function generateImages(
     size: "1024x1024",
   }
 
-  const image: ImagesResponse = await openai.images.generate(dall_e_3)
+  const image: ImagesResponse = await openai.images.generate({
+    model: "dall-e-3",
+    prompt: query,
+    n: 1,
+    response_format: "b64_json",
+    size: "1024x1024",
+  })
   return image.data
 }

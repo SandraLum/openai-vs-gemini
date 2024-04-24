@@ -51,7 +51,7 @@ export default function ImageGeneration() {
         }
       } catch (e) {
         console.error("Error generating openai images", e as Error)
-        setOpenAIErrors(e)
+        setOpenAIErrors((e as Error).message)
       }
       setLoading(false)
     }
