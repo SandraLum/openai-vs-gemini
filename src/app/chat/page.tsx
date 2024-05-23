@@ -4,7 +4,7 @@ import styles from "./chat.module.css"
 import { runGoogleAI, runOpenAI } from "../actions/ai"
 import IconButton from "@/components/IconButton"
 import LoadingSpinner from "@/components/LoadingSpinner"
-import { getSampleQuestions } from "../api/chat"
+import { getSampleQuestions } from "../../services/chatService"
 
 interface Suggestion {
   query: string
@@ -36,6 +36,7 @@ export default function Chat() {
   useEffect(() => {
     async function init() {
       const { data } = await getSampleQuestions()
+      console.log("data", data)
       setSuggestions(
         data ? data.map((d: any) => ({ query: d.question })) : mockQns
       )
